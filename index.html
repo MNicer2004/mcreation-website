@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="assets/css/styles.css" />
 
   <!--=============== FIREBASE SDKs (compat) ===============-->
-  <!-- These two scripts load Firebase’s “compat” SDK so we can call firebase.database(). -->
+  <!-- These two scripts load Firebase's "compat" SDK so we can call firebase.database(). -->
   <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
   <!--=============== END FIREBASE SDKs ===============-->
@@ -365,64 +365,32 @@
       <h2 class="section__title">WORKS/PROJECTS</h2>
 
       <div class="projects__container container grid">
-        <article class="projects__card">
-          <a href="gallery-project1.html" target="_blank" class="projects__image">
-            <img
-              src="assets/img/project-bg1.png"
-              alt="image"
-              class="projects__img"
-            />
-          </a>
-
-          <div class="projects__data">
+        <article class="projects__card projects__card--horizontal">
+          <div class="projects__card-imgwrap">
+            <a href="gallery-graphic-design.html" target="_blank" class="projects__image">
+              <img
+                src="assets/img/project-bg1.png"
+                alt="image"
+                class="projects__img"
+              />
+            </a>
+          </div>
+          <div class="projects__card-content">
             <h3 class="projects__name">ALL PROJECTS</h3>
-            <p class="projects__description">
+            <p class="projects__description projects__description--large">
               A collection of works showcasing different skills and creative outputs.
             </p>
-            <div class="projects__skills">
-              <img
-                src="assets/img/blender-2.svg"
-                alt="image"
-                class="projects__skill"
-              />
-              <img
-                src="assets/img/figma.svg"
-                alt="image"
-                class="projects__skill"
-              />
-              <img
-                src="assets/img/skills-photoshop.svg"
-                alt="image"
-                class="projects__skill"
-              />
-              <img
-                src="assets/img/adobe-illustrator-cc-3.svg"
-                alt="image"
-                class="projects__skill"
-              />
-              <img
-                src="assets/img/ae.svg"
-                alt="image"
-                class="projects__skill"
-              />
-              <img
-                src="assets/img/cc-white.svg"
-                alt="image"
-                class="projects__skill"
-              />
-              <img
-                src="assets/img/canva.svg"
-                alt="image"
-                class="projects__skill"
-              />
-              <img
-                src="assets/img/pureref.svg"
-                alt="image"
-                class="projects__skill"
-              />
+            <div class="projects__skills projects__skills--large">
+              <img src="assets/img/blender-2.svg" alt="Blender" class="projects__skill" />
+              <img src="assets/img/figma.svg" alt="Figma" class="projects__skill" />
+              <img src="assets/img/skills-photoshop.svg" alt="Photoshop" class="projects__skill" />
+              <img src="assets/img/adobe-illustrator-cc-3.svg" alt="Illustrator" class="projects__skill" />
+              <img src="assets/img/ae.svg" alt="After Effects" class="projects__skill" />
+              <img src="assets/img/cc-white.svg" alt="Creative Cloud" class="projects__skill" />
+              <img src="assets/img/canva.svg" alt="Canva" class="projects__skill" />
+              <img src="assets/img/pureref.svg" alt="PureRef" class="projects__skill" />
             </div>
-
-            <a href="gallery-project1.html" target="_blank" class="projects__button">
+            <a href="gallery-graphic-design.html" target="_blank" class="projects__button projects__button--large">
               <i class="ri-link"></i>
               <span>Visit Project</span>
             </a>
@@ -770,7 +738,7 @@ Projects featuring detailed 3D assets and digital object creation.
     // Obtain a reference to the Realtime Database
     var database = firebase.database();
 
-    // Create references for “views” and “likes” nodes
+    // Create references for "views" and "likes" nodes
     var viewsRef = database.ref("metrics/views");
     var likesRef = database.ref("metrics/likes");
 
@@ -781,7 +749,7 @@ Projects featuring detailed 3D assets and digital object creation.
 
     // When the DOM is ready:
     document.addEventListener("DOMContentLoaded", () => {
-      // ────────── (1) Increment “views” on every page load ──────────
+      // ────────── (1) Increment "views" on every page load ──────────
       viewsRef.transaction(
         (current) => (current || 0) + 1,
         (error, committed, snapshot) => {
@@ -797,7 +765,7 @@ Projects featuring detailed 3D assets and digital object creation.
         }
       );
 
-      // ────────── (2) Load the current “likes” count once ──────────
+      // ────────── (2) Load the current "likes" count once ──────────
       likesRef
         .once("value")
         .then((snapshot) => {
@@ -809,7 +777,7 @@ Projects featuring detailed 3D assets and digital object creation.
           likeCountEl.textContent = "0";
         });
 
-      // ────────── (3) On heart‐box click, increment “likes” ──────────
+      // ────────── (3) On heart‐box click, increment "likes" ──────────
       likeBox.addEventListener("click", () => {
         // Disable further clicks until reload
         likeBox.style.pointerEvents = "none";

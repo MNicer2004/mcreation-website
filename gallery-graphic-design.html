@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="assets/img/Asset 10.png" type="image/x-icon" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <title>Graphic Design | Mcreation Studio</title>
+  <style>
+    html { min-height: 100%; }
+    body {
+      min-height: 100vh; margin: 0; padding: 0;
+      display: flex; flex-direction: column;
+      background-color: var(--body-color);
+      color: var(--white-color);
+      font-family: var(--body-font);
+      overflow-x: hidden;
+    }
+    main { flex: 1; }
+    .gallery-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 3rem 1rem 1rem;
+    }
+    .section__title {
+      text-align: center;
+      margin: 0 0 1.5rem;
+      font-size: var(--h1-font-size);
+    }
+    .section-fill {
+      background-color: var(--container-color);
+      border-radius: 1rem;
+      padding: 1.5rem 1rem;
+      margin-bottom: 2rem;
+    }
+    .company-gallery {
+      margin-bottom: 2rem;
+    }
+    .company-gallery h3 {
+      font-size: var(--h2-font-size); margin-bottom: 0.5rem;
+    }
+    .company-gallery p {
+      color: var(--text-color); margin-bottom: 1rem;
+    }
+    .gallery__grid {
+      display: grid; gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    }
+    @media screen and (min-width: 300px) {
+      .gallery__grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media screen and (min-width: 600px) {
+      .gallery__grid { grid-template-columns: repeat(5, 1fr); }
+    }
+    @media screen and (min-width: 1024px) {
+      .gallery__grid { grid-template-columns: repeat(6, 1fr); }
+    }
+    .gallery__media {
+      width: 100%;
+      border-radius: 0.75rem;
+      object-fit: cover;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+      aspect-ratio: 1/1;
+    }
+    .gallery__media:hover {
+      transform: translateY(-0.25rem);
+    }
+    .lightbox {
+      position: fixed; inset: 0;
+      background-color: rgba(0,0,0,0.8);
+      display: none;
+      align-items: center; justify-content: center;
+      z-index: 2000; padding: 1rem;
+    }
+    .lightbox.active {
+      display: flex;
+    }
+    .lightbox-img {
+      max-width: 90%; max-height: 90%;
+      border-radius: 0.75rem;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    }
+    .lightbox-close {
+      position: absolute; top: 1rem; right: 1rem;
+      font-size: 2rem; color: #fff; cursor: pointer;
+    }
+    .lightbox-close:hover { color: var(--first-color); }
+    .copyright {
+      text-align: center;
+      padding: 1rem 0;
+      font-size: var(--small-font-size);
+      color: var(--text-color);
+      background-color: var(--container-color);
+      flex-shrink: 0;
+    }
+    .show-scroll {
+      visibility: visible;
+      opacity: 1;
+      transition: all 0.4s;
+    }
+    .scrollup {
+      position: fixed; right: 1rem; bottom: -20%;
+      background-color: var(--first-color);
+      padding: 0.75rem;
+      border-radius: 50%;
+      z-index: 100;
+      visibility: hidden;
+      opacity: 0;
+      transition: all 0.4s;
+    }
+    .scrollup.show-scroll {
+      bottom: 1.5rem; visibility: visible; opacity: 1;
+    }
+    .filter-bar {
+      display: flex; justify-content: center; flex-wrap: wrap;
+      gap: 0.5rem; margin-bottom: 1.5rem;
+    }
+    .filter-button {
+      background-color: var(--container-color);
+      color: var(--white-color);
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 2rem;
+      font-size: var(--small-font-size);
+      cursor: pointer;
+      transition: background-color 0.3s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .filter-button:hover { background-color: var(--first-color-alt); }
+    .filter-button.active { background-color: var(--first-color); }
+  </style>
+</head>
+<body>
+  <!-- BUTTON NAVBAR -->
+  <div class="filter-bar" style="margin-top:2rem;">
+    <a href="gallery-graphic-design.html" class="filter-button active">Graphic Design</a>
+    <a href="gallery-3d-modeling.html" class="filter-button">3D Modeling</a>
+    <a href="gallery-3d-animation.html" class="filter-button">3D Animation</a>
+    <a href="gallery-appdev.html" class="filter-button">App Design & Development</a>
+  </div>
+  <!-- NAV -->
+  <nav class="nav">
+    <ul class="nav__list">
+      <li><a href="index.html#home" title="Home" class="nav__link"><i class="ri-home-line"></i></a></li>
+      <li><a href="gallery-graphic-design.html" title="Graphic Design" class="nav__link"><i class="ri-palette-line"></i></a></li>
+      <li><a href="gallery-3d-modeling.html" title="3D Modeling" class="nav__link"><i class="ri-cube-line"></i></a></li>
+      <li><a href="gallery-3d-animation.html" title="3D Animation" class="nav__link"><i class="ri-movie-2-line"></i></a></li>
+      <li><a href="gallery-appdev.html" title="App Design & Development" class="nav__link"><i class="ri-smartphone-line"></i></a></li>
+    </ul>
+  </nav>
+  <main class="main section gallery-container">
+    <h2 class="section__title">Graphic Design</h2>
+    <div class="section-fill">
+      <div class="company-gallery active" data-company="personal">
+        <h3>Personal Projects</h3>
+        <p>Some of my personal works outside of client projects.</p>
+        <div class="gallery__grid">
+          <img src="assets/img/personal/Burger King Banner F.png" alt="Personal 0" class="gallery__media"/>
+          <img src="assets/img/personal/1.png" alt="Personal 1" class="gallery__media"/>
+          <img src="assets/img/personal/2.png" alt="Personal 2" class="gallery__media"/>
+          <img src="assets/img/personal/3.png" alt="Personal 3" class="gallery__media"/>
+          <img src="assets/img/personal/4.png" alt="Personal 4" class="gallery__media"/>
+          <img src="assets/img/personal/5.png" alt="Personal 5" class="gallery__media"/>
+          <img src="assets/img/personal/6.png" alt="Personal 6" class="gallery__media"/>
+          <img src="assets/img/personal/12345.png" alt="Personal 7" class="gallery__media"/>
+          <img src="assets/img/PN.png" alt="Personal 8" class="gallery__media"/>
+          <img src="assets/img/OR.png" alt="Personal 9" class="gallery__media"/>
+          <img src="assets/img/honeyposter.png" alt="Personal 10" class="gallery__media"/>
+          <img src="assets/img/personal/CAROUSEL-GYM2.png" alt="Personal 11" class="gallery__media"/>
+          <img src="assets/img/personal/d.png" alt="Personal 12" class="gallery__media"/>
+          <img src="assets/img/personal/jersey1.png" alt="Personal 13" class="gallery__media"/>
+          <img src="assets/img/personal/jersey2.png" alt="Personal 14" class="gallery__media"/>
+          <img src="assets/img/personal/JERSEY3.png" alt="Personal 15" class="gallery__media"/>
+          <img src="assets/img/personal/jersey4.png" alt="Personal 16" class="gallery__media"/>
+          <img src="assets/img/personal/sundae.png" alt="Personal 17" class="gallery__media"/>
+          <img src="assets/img/personal/j.png" alt="Personal 18" class="gallery__media"/>
+          <img src="assets/img/personal/thu.png" alt="Personal 19" class="gallery__media"/>
+        </div>
+      </div>
+      <div class="company-gallery" data-company="personal">
+        <h3>PetBloom</h3>
+        <p>These are my graphic design works for Petbloom. The images shown are selected.</p>
+        <div class="gallery__grid">
+          <img src="assets/img/petbloom/1.1 - Headline1.png" alt="PetBloom 0" class="gallery__media"/>
+          <img src="assets/img/petbloom/1.png" alt="PetBloom 1" class="gallery__media"/>
+          <img src="assets/img/petbloom/2.png" alt="PetBloom 2" class="gallery__media"/>
+          <img src="assets/img/petbloom/PetBloom1.png" alt="PetBloom 3" class="gallery__media"/>
+          <img src="assets/img/petbloom/pb20.png" alt="PetBloom 4" class="gallery__media"/>
+          <img src="assets/img/petbloom/pb21.png" alt="PetBloom 5" class="gallery__media"/>
+          <img src="assets/img/petbloom/pb22.png" alt="PetBloom 6" class="gallery__media"/>
+          <img src="assets/img/petbloom/pb23.png" alt="PetBloom 7" class="gallery__media"/>
+          <img src="assets/img/petbloom/pb24.png" alt="PetBloom 8" class="gallery__media"/>
+          <img src="assets/img/petbloom/pb25.png" alt="PetBloom 9" class="gallery__media"/>
+          <img src="assets/img/petbloom/pb1.png" alt="PetBloom 10" class="gallery__media"/>
+          <img src="assets/img/petbloom/pb2.png" alt="PetBloom 11" class="gallery__media"/>
+          <img src="assets/img/petbloom/pb3.png" alt="PetBloom 12" class="gallery__media"/>
+          <img src="assets/img/petbloom/pb4.png" alt="PetBloom 13" class="gallery__media"/>
+          <img src="assets/img/petbloom/pb5.png" alt="PetBloom 14" class="gallery__media"/>
+          <img src="assets/img/petbloom/pb6.png" alt="PetBloom 15" class="gallery__media"/>
+          <img src="assets/img/petbloom/pb7.png" alt="PetBloom 16" class="gallery__media"/>
+          <img src="assets/img/petbloom/pb8.png" alt="PetBloom 17" class="gallery__media"/>
+          <img src="assets/img/petbloom/pb9.png" alt="PetBloom 18" class="gallery__media"/>
+          <img src="assets/img/petbloom/pb10.png" alt="PetBloom 19" class="gallery__media"/>
+          <img src="assets/img/petbloom/pb11.png" alt="PetBloom 20" class="gallery__media"/>
+          <img src="assets/img/petbloom/pb12.png" alt="PetBloom 21" class="gallery__media"/>
+          <img src="assets/img/petbloom/pb13.png" alt="PetBloom 22" class="gallery__media"/>
+          <img src="assets/img/petbloom/pb14.png" alt="PetBloom 23" class="gallery__media"/>
+          <img src="assets/img/petbloom/pb15.png" alt="PetBloom 24" class="gallery__media"/>
+          <img src="assets/img/petbloom/pb16.png" alt="PetBloom 25" class="gallery__media"/>
+          <img src="assets/img/petbloom/pb17.png" alt="PetBloom 26" class="gallery__media"/>
+          <img src="assets/img/petbloom/pb18.png" alt="PetBloom 27" class="gallery__media"/>
+          <img src="assets/img/petbloom/pb19.png" alt="PetBloom 28" class="gallery__media"/>
+        </div>
+      </div>
+      <div class="company-gallery" data-company="personal">
+        <h3>TheHoopGang</h3>
+        <p>To be uploaded soon..</p>
+        <div class="gallery__grid">
+          <img src="assets/img/thg/image4.png" alt="thg" class="gallery__media"/>
+          <img src="assets/img/thg/image3.png" alt="thg" class="gallery__media"/>
+          <img src="assets/img/thg/IMAGE2.png" alt="thg" class="gallery__media"/>
+        </div>
+      </div>
+    </div>
+  </main>
+  <!-- LIGHTBOX -->
+  <div id="lightbox" class="lightbox">
+    <span class="lightbox-close">&times;</span>
+    <img class="lightbox-img" src="" alt="Enlarged View" />
+  </div>
+  <!-- COPYRIGHT -->
+  <div class="copyright">
+    &#169; 2025 Mcreation. All rights reserved.
+  </div>
+  <!-- SCROLL UP -->
+  <a href="#" class="scrollup" id="scroll-up"><i class="ri-arrow-up-line"></i></a>
+  <script src="assets/js/scrollreveal.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      /*=============== LIGHTBOX ===============*/
+      const lightbox      = document.getElementById('lightbox');
+      const lightboxImg   = document.querySelector('.lightbox-img');
+      const lightboxClose = document.querySelector('.lightbox-close');
+      document.querySelectorAll('.gallery__media').forEach(el => {
+        el.addEventListener('click', () => {
+          lightboxImg.src = el.src;
+          lightbox.classList.add('active');
+        });
+      });
+      lightboxClose.addEventListener('click', () => lightbox.classList.remove('active'));
+      lightbox.addEventListener('click', e => {
+        if (e.target === lightbox) lightbox.classList.remove('active');
+      });
+      /*=============== SCROLL-UP BUTTON ===============*/
+      const scrollUpEl = document.getElementById('scroll-up');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY >= 350) scrollUpEl.classList.add('show-scroll');
+        else                       scrollUpEl.classList.remove('show-scroll');
+      });
+    });
+  </script>
+</body>
+</html> 
